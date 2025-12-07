@@ -48,38 +48,38 @@ void Order::displayOrder() const {
   cout << endl;
   cout << Utils::colorText("╔══════════════════════════════════════════════════"
                            "═════════════╗",
-                           "cyan")
+                           "yellow")
        << endl;
-  cout << Utils::colorText("║", "cyan") << "                    📦 "
+  cout << Utils::colorText("║", "yellow") << "                    📦 "
        << Utils::colorText("ORDER DETAILS", "white", "", "bold")
-       << "                          " << Utils::colorText("║", "cyan") << endl;
+       << "                          " << Utils::colorText("║", "yellow") << endl;
   cout << Utils::colorText("╠══════════════════════════════════════════════════"
                            "═════════════╣",
-                           "cyan")
+                           "yellow")
        << endl;
 
   // Order info
-  cout << Utils::colorText("║", "cyan")
+  cout << Utils::colorText("║", "yellow")
        << " Order ID:    " << Utils::colorText(id, "yellow", "", "bold")
        << endl;
-  cout << Utils::colorText("║", "cyan")
+  cout << Utils::colorText("║", "yellow")
        << " Customer ID: " << Utils::colorText(to_string(customerId), "white")
        << endl;
-  cout << Utils::colorText("║", "cyan") << " Status:      "
+  cout << Utils::colorText("║", "yellow") << " Status:      "
        << Utils::colorText(statusToString(status),
                            status == OrderStatus::DELIVERED   ? "green"
                            : status == OrderStatus::CANCELLED ? "red"
                                                               : "yellow",
                            "", "bold")
        << endl;
-  cout << Utils::colorText("║", "cyan")
+  cout << Utils::colorText("║", "yellow")
        << " Created:     " << Utils::colorText(createdAt, "white") << endl;
 
   cout << Utils::colorText("╠══════════════════════════════════════════════════"
                            "═════════════╣",
-                           "cyan")
+                           "yellow")
        << endl;
-  cout << Utils::colorText("║", "cyan")
+  cout << Utils::colorText("║", "yellow")
        << Utils::colorText(" Items:", "white", "", "bold") << endl;
 
   for (const OrderItem &item : items) {
@@ -87,7 +87,7 @@ void Order::displayOrder() const {
     priceStr << fixed << setprecision(2) << item.price;
     subtotalStr << fixed << setprecision(2) << item.getSubtotal();
 
-    cout << Utils::colorText("║", "cyan") << "   • "
+    cout << Utils::colorText("║", "yellow") << "   • "
          << Utils::colorText(item.productName, "white");
 
     int nameLen = item.productName.length();
@@ -100,19 +100,19 @@ void Order::displayOrder() const {
 
   cout << Utils::colorText("╠══════════════════════════════════════════════════"
                            "═════════════╣",
-                           "cyan")
+                           "yellow")
        << endl;
 
   stringstream totalStr;
   totalStr << fixed << setprecision(2) << totalAmount;
 
-  cout << Utils::colorText("║", "cyan")
+  cout << Utils::colorText("║", "yellow")
        << "                                    "
        << Utils::colorText("TOTAL: $" + totalStr.str(), "green", "", "bold")
        << endl;
   cout << Utils::colorText("╚══════════════════════════════════════════════════"
                            "═════════════╝",
-                           "cyan")
+                           "yellow")
        << endl;
 }
 
@@ -191,4 +191,3 @@ string Order::getCurrentTimestamp() {
 
   return ss.str();
 }
-
