@@ -1,9 +1,74 @@
 [
   {
-    "id": "U001",
-    "name": "Admin",
-    "email": "admin@merxq.com",
-    "password": "admin123",
-    "userType": "admin"
+    "id": 1,
+    "name": "Super Admin",
+    "email": "admin@gmail.com",
+    "password": "123",
+    "role": "admin",
+    "department": "Management",
+    "superAdmin": true
+  },
+  {
+    "id": 2,
+    "name": "Demo Customer",
+    "email": "customer@merxq.com",
+    "password": "pass123",
+    "role": "customer",
+    "phone": "01700000001",
+    "address": "123 Main Street, Dhaka"
+  },
+  {
+    "id": 3,
+    "name": "Taohid",
+    "email": "taohidul",
+    "password": "pass123",
+    "role": "customer",
+    "phone": "010",
+    "address": "busan"
+  },
+  {
+    "id": 4,
+    "name": "tahodi",
+    "email": "taohidul@gmail.com",
+    "password": "pass123",
+    "role": "customer",
+    "phone": "010",
+    "address": "busan"
+  },
+  {
+    "id": 5,
+    "name": "Al Rafi",
+    "email": "taohid",
+    "password": "pass123",
+    "role": "customer",
+    "phone": "",
+    "address": ""
+  },
+  {
+    "id": 6,
+    "name": "Arafat Hossain",
+    "email": "arafat@gmail.com",
+    "password": "pass123",
+    "role": "customer",
+    "phone": "",
+    "address": ""
+  },
+  {
+    "id": 7,
+    "name": "Test",
+    "email": "test@gmail.com",
+    "password": "pass123",
+    "role": "customer",
+    "phone": "",
+    "address": ""
+  },
+  {
+    "id": 8,
+    "name": "Topu",
+    "email": "topu@gmail.com",
+    "password": "123",
+    "role": "customer",
+    "phone": "",
+    "address": ""
   }
 ]

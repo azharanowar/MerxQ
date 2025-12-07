@@ -45,6 +45,7 @@ public:
   int getId() const { return id; }
   string getName() const { return name; }
   string getEmail() const { return email; }
+  string getPassword() const { return password; }
   string getRole() const { return role; }
 
   // ============================================

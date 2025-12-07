@@ -1,33 +1,10 @@
-# Compiled files
-*.o
-*.obj
-
-# Executables
-merxq
-merxq.exe
-a.out
-
-# Build directory
+# Build output
 build/
-bin/
-obj/
+merxq
 
-# IDE specific files
+# IDE files
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
 
-# macOS
+# System files
 .DS_Store
-
-# Debugging
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Backup files
-*.bak
-*.backup

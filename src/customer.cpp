@@ -21,14 +21,14 @@ Customer::Customer(int id, const string &name, const string &email,
 void Customer::displayMenu() {
   Utils::showSubHeader("Customer Menu");
 
-  cout << Utils::colorText("  1. ", "cyan") << "Browse Products" << endl;
-  cout << Utils::colorText("  2. ", "cyan") << "View Cart"
+  cout << Utils::colorText("  1. ", "yellow") << "Browse Products" << endl;
+  cout << Utils::colorText("  2. ", "yellow") << "View Cart"
        << Utils::colorText(" [" + to_string(cartProductIds.size()) + " items]",
                            "yellow")
        << endl;
-  cout << Utils::colorText("  3. ", "cyan") << "Place Order" << endl;
-  cout << Utils::colorText("  4. ", "cyan") << "Order History" << endl;
-  cout << Utils::colorText("  5. ", "cyan") << "My Profile" << endl;
+  cout << Utils::colorText("  3. ", "yellow") << "Place Order" << endl;
+  cout << Utils::colorText("  4. ", "yellow") << "Order History" << endl;
+  cout << Utils::colorText("  5. ", "yellow") << "My Profile" << endl;
   cout << Utils::colorText("  0. ", "red") << "Logout" << endl;
   cout << endl;
 }
@@ -63,7 +63,7 @@ void Customer::displayInfo() const {
 
 void Customer::browseProducts() {
   // TODO: Will be implemented with Product class
-  cout << Utils::colorText("📦 Browsing products...", "cyan") << endl;
+  cout << Utils::colorText("📦 Browsing products...", "yellow") << endl;
   cout << Utils::colorText("   (Product catalog coming soon!)", "yellow")
        << endl;
 }
@@ -116,7 +116,7 @@ void Customer::placeOrder() {
   // TODO: Will create actual Order when Order class is ready
   cout << Utils::colorText("🎉 Order placed successfully!", "green", "", "bold")
        << endl;
-  cout << Utils::colorText("   Thank you for shopping with MerxQ!", "cyan")
+  cout << Utils::colorText("   Thank you for shopping with MerxQ!", "yellow")
        << endl;
   clearCart();
 }

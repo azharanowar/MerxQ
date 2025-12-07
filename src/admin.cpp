@@ -19,24 +19,24 @@ Admin::Admin(int id, const string &name, const string &email,
 void Admin::displayMenu() {
   Utils::showSubHeader("Admin Control Panel");
 
-  cout << Utils::colorText("  📦 Inventory Management", "magenta", "", "bold")
+  cout << Utils::colorText("  📦 Inventory Management", "yellow", "", "bold")
        << endl;
-  cout << Utils::colorText("  1. ", "cyan") << "View Inventory" << endl;
-  cout << Utils::colorText("  2. ", "cyan") << "Add New Product" << endl;
-  cout << Utils::colorText("  3. ", "cyan") << "Update Product" << endl;
-  cout << Utils::colorText("  4. ", "cyan") << "Delete Product" << endl;
+  cout << Utils::colorText("  1. ", "yellow") << "View Inventory" << endl;
+  cout << Utils::colorText("  2. ", "yellow") << "Add New Product" << endl;
+  cout << Utils::colorText("  3. ", "yellow") << "Update Product" << endl;
+  cout << Utils::colorText("  4. ", "yellow") << "Delete Product" << endl;
   cout << endl;
 
-  cout << Utils::colorText("  📋 Order Management", "magenta", "", "bold")
+  cout << Utils::colorText("  📋 Order Management", "yellow", "", "bold")
        << endl;
-  cout << Utils::colorText("  5. ", "cyan") << "View All Orders" << endl;
-  cout << Utils::colorText("  6. ", "cyan") << "Update Order Status" << endl;
+  cout << Utils::colorText("  5. ", "yellow") << "View All Orders" << endl;
+  cout << Utils::colorText("  6. ", "yellow") << "Update Order Status" << endl;
   cout << endl;
 
   if (superAdmin) {
-    cout << Utils::colorText("  👥 User Management", "magenta", "", "bold")
+    cout << Utils::colorText("  👥 User Management", "yellow", "", "bold")
          << endl;
-    cout << Utils::colorText("  7. ", "cyan") << "View All Users" << endl;
+    cout << Utils::colorText("  7. ", "yellow") << "View All Users" << endl;
     cout << endl;
   }
 
@@ -53,16 +53,16 @@ void Admin::displayInfo() const {
   User::displayInfo();
 
   // Add admin-specific info
-  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "magenta") << endl;
-  cout << Utils::colorText("  Admin Details", "magenta", "", "bold") << endl;
-  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "magenta") << endl;
+  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "yellow") << endl;
+  cout << Utils::colorText("  Admin Details", "yellow", "", "bold") << endl;
+  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "yellow") << endl;
   cout << "  Department:  " << Utils::colorText(department, "white", "", "bold")
        << endl;
   cout << "  Super Admin: "
        << Utils::colorText(superAdmin ? "Yes ⭐" : "No",
                            superAdmin ? "green" : "yellow")
        << endl;
-  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "magenta") << endl;
+  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "yellow") << endl;
 }
 
 // ============================================
@@ -72,7 +72,7 @@ void Admin::displayInfo() const {
 void Admin::viewInventory() {
   Utils::showSubHeader("Inventory Overview");
   // TODO: Will be implemented with Product class
-  cout << Utils::colorText("   📦 Loading inventory...", "cyan") << endl;
+  cout << Utils::colorText("   📦 Loading inventory...", "yellow") << endl;
   cout << Utils::colorText("   (Product catalog coming soon!)", "yellow")
        << endl;
 }
@@ -80,7 +80,7 @@ void Admin::viewInventory() {
 void Admin::addProduct() {
   Utils::showSubHeader("Add New Product");
   // TODO: Will be implemented with Product class
-  cout << Utils::colorText("   ➕ Add product form...", "cyan") << endl;
+  cout << Utils::colorText("   ➕ Add product form...", "yellow") << endl;
   cout << Utils::colorText("   (Product management coming soon!)", "yellow")
        << endl;
 }
@@ -88,7 +88,7 @@ void Admin::addProduct() {
 void Admin::updateProduct(int productId) {
   Utils::showSubHeader("Update Product #" + to_string(productId));
   // TODO: Will be implemented with Product class
-  cout << Utils::colorText("   ✏️ Edit product form...", "cyan") << endl;
+  cout << Utils::colorText("   ✏️ Edit product form...", "yellow") << endl;
   cout << Utils::colorText("   (Product management coming soon!)", "yellow")
        << endl;
 }
@@ -109,7 +109,7 @@ void Admin::deleteProduct(int productId) {
 void Admin::viewAllOrders() {
   Utils::showSubHeader("All Customer Orders");
   // TODO: Will be implemented with Order class
-  cout << Utils::colorText("   📋 Loading orders...", "cyan") << endl;
+  cout << Utils::colorText("   📋 Loading orders...", "yellow") << endl;
   cout << Utils::colorText("   (Order management coming soon!)", "yellow")
        << endl;
 }
@@ -117,7 +117,7 @@ void Admin::viewAllOrders() {
 void Admin::updateOrderStatus(int orderId) {
   // TODO: Will be implemented with Order class
   cout << Utils::colorText(
-              "   📝 Updating order #" + to_string(orderId) + "...", "cyan")
+              "   📝 Updating order #" + to_string(orderId) + "...", "yellow")
        << endl;
   cout << Utils::colorText("   (Order management coming soon!)", "yellow")
        << endl;
@@ -136,7 +136,7 @@ void Admin::viewAllUsers() {
 
   Utils::showSubHeader("All Users");
   // TODO: Will be implemented with FileManager
-  cout << Utils::colorText("   👥 Loading users...", "cyan") << endl;
+  cout << Utils::colorText("   👥 Loading users...", "yellow") << endl;
   cout << Utils::colorText("   (User management coming soon!)", "yellow")
        << endl;
 }

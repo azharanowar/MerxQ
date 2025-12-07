@@ -1,52 +1,34 @@
-# MerxQ Makefile
+# Compiler settings
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -Iinclude -Ilib
+CXXFLAGS = -std=c++17 -Wall -Iinclude -Ilib
 
-# Directories
-SRC_DIR = src
-INCLUDE_DIR = include
-BUILD_DIR = build
-
-# Target executable
+# Output executable name
 TARGET = merxq
 
 # Source files
-SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
-OBJECTS = $(SOURCES:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
+SOURCES = src/main.cpp \
+          src/utils.cpp \
+          src/user.cpp \
+          src/customer.cpp \
+          src/admin.cpp \
+          src/product.cpp \
+          src/cart.cpp \
+          src/order.cpp \
+          src/filemanager.cpp \
+          src/application.cpp
 
-# Default target
-all: $(BUILD_DIR) $(TARGET)
+# Build the project
+all: $(TARGET)
+	@echo "Build successful! Run with: ./$(TARGET)"
 
-# Create build directory
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+$(TARGET): $(SOURCES)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCES)
 
-# Link executable
-$(TARGET): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS)
-	@echo "✓ Build successful! Run with: ./$(TARGET)"
-
-# Compile source files
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Run the program
+# Run the application
 run: $(TARGET)
 	./$(TARGET)
 
-# Clean build artifacts
+# Clean build files
 clean:
-	rm -rf $(BUILD_DIR) $(TARGET)
-	@echo "✓ Cleaned build artifacts"
-
-# Rebuild
-rebuild: clean all
-
-# Help
-help:
-	@echo "MerxQ Build System"
-	@echo "make       - Build the project"
-	@echo "make run   - Build and run"
-	@echo "make clean - Remove build artifacts"
-
-.PHONY: all run clean rebuild help
+	rm -f $(TARGET)
+	@echo "Cleaned!"

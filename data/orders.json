@@ -1,1 +1,78 @@
-[]
+[
+    {
+        "id": "ORD0001",
+        "customerId": 2,
+        "items": [
+            {
+                "productId": "P001",
+                "productName": "iPhone 15 Pro",
+                "price": 1299.99,
+                "quantity": 1
+            },
+            {
+                "productId": "P009",
+                "productName": "AirPods Pro 2",
+                "price": 249.99,
+                "quantity": 1
+            }
+        ],
+        "totalAmount": 1549.98,
+        "status": "Delivered",
+        "createdAt": "2024-12-05 10:30:00",
+        "updatedAt": "2024-12-07 14:00:00"
+    },
+    {
+        "id": "ORD0002",
+        "customerId": 3,
+        "items": [
+            {
+                "productId": "P003",
+                "productName": "MacBook Air M3",
+                "price": 1499.99,
+                "quantity": 1
+            }
+        ],
+        "totalAmount": 1499.99,
+        "status": "Shipped",
+        "createdAt": "2024-12-06 15:45:00",
+        "updatedAt": "2024-12-07 09:30:00"
+    },
+    {
+        "id": "ORD0003",
+        "customerId": 4,
+        "items": [
+            {
+                "productId": "P006",
+                "productName": "Sony WH-1000XM5",
+                "price": 399.99,
+                "quantity": 2
+            },
+            {
+                "productId": "P010",
+                "productName": "Nintendo Switch OLED",
+                "price": 349.99,
+                "quantity": 1
+            }
+        ],
+        "totalAmount": 1149.97,
+        "status": "Processing",
+        "createdAt": "2024-12-07 08:15:00",
+        "updatedAt": "2024-12-07 08:15:00"
+    },
+    {
+        "id": "ORD0004",
+        "customerId": 5,
+        "items": [
+            {
+                "productId": "P004",
+                "productName": "S24 Ultra",
+                "price": 800.0,
+                "quantity": 1
+            }
+        ],
+        "totalAmount": 800.0,
+        "status": "Pending",
+        "createdAt": "2024-12-07 12:00:00",
+        "updatedAt": "2024-12-07 12:00:00"
+    }
+]

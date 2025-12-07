@@ -5,7 +5,7 @@
         "category": "Electronics",
         "description": "Latest Apple smartphone with A17 Pro chip",
         "price": 1299.99,
-        "quantity": 25
+        "quantity": 23
     },
     {
         "id": "P002",
@@ -21,6 +21,62 @@
         "category": "Computers",
         "description": "Lightweight laptop with M3 chip",
         "price": 1499.99,
+        "quantity": 25
+    },
+    {
+        "id": "P004",
+        "name": "S24 Ultra",
+        "category": "Mobile",
+        "description": "Samsung S24 Ultra Blue 16GB 512GB",
+        "price": 800.0,
+        "quantity": 20
+    },
+    {
+        "id": "P005",
+        "name": "S25 Ultra",
+        "category": "Phone",
+        "description": "Samsung S25 Ultra Blue 256GB",
+        "price": 400.0,
         "quantity": 15
+    },
+    {
+        "id": "P006",
+        "name": "Sony WH-1000XM5",
+        "category": "Audio",
+        "description": "Premium noise-cancelling wireless headphones",
+        "price": 399.99,
+        "quantity": 40
+    },
+    {
+        "id": "P007",
+        "name": "iPad Pro 12.9",
+        "category": "Tablets",
+        "description": "Apple iPad Pro with M2 chip and Liquid Retina XDR display",
+        "price": 1099.99,
+        "quantity": 18
+    },
+    {
+        "id": "P008",
+        "name": "Dell XPS 15",
+        "category": "Computers",
+        "description": "Premium Windows laptop with Intel Core i9",
+        "price": 1799.99,
+        "quantity": 12
+    },
+    {
+        "id": "P009",
+        "name": "AirPods Pro 2",
+        "category": "Audio",
+        "description": "Apple wireless earbuds with active noise cancellation",
+        "price": 249.99,
+        "quantity": 50
+    },
+    {
+        "id": "P010",
+        "name": "Nintendo Switch OLED",
+        "category": "Gaming",
+        "description": "Portable gaming console with OLED screen",
+        "price": 349.99,
+        "quantity": 35
     }
 ]

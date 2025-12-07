@@ -16,15 +16,15 @@ User::User(int id, const string &name, const string &email,
 // ============================================
 
 void User::displayInfo() const {
-  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "cyan") << endl;
-  cout << Utils::colorText("  User Information", "cyan", "", "bold") << endl;
-  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "cyan") << endl;
+  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "yellow") << endl;
+  cout << Utils::colorText("  User Information", "yellow", "", "bold") << endl;
+  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "yellow") << endl;
   cout << "  ID:    " << Utils::colorText(to_string(id), "white", "", "bold")
        << endl;
   cout << "  Name:  " << Utils::colorText(name, "white", "", "bold") << endl;
   cout << "  Email: " << Utils::colorText(email, "yellow") << endl;
-  cout << "  Role:  " << Utils::colorText(role, "magenta") << endl;
-  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "cyan") << endl;
+  cout << "  Role:  " << Utils::colorText(role, "yellow") << endl;
+  cout << Utils::colorText("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "yellow") << endl;
 }
 
 bool User::authenticate(const string &inputPassword) const {
