@@ -501,3 +501,262 @@ void Application::viewProfile() {
 }
 
 
+
+
+// ============================================
+// ADMIN FEATURES
+// ============================================
+
+void Application::viewInventory() {
+  Utils::clearScreen();
+  Utils::showSubHeader("📦 Inventory Management");
+
+  products = FileManager::loadProducts();
+
+  cout << Utils::colorText("Total Products: " + to_string(products.size()),
+                           "yellow")
+       << endl;
+  displayProductList();
+
+  Utils::pauseScreen();
+}
+
+void Application::addProduct() {
+  Utils::clearScreen();
+  Utils::showSubHeader("➕ Add New Product");
+
+  string name = Utils::getStringInput("Product Name: ");
+  string category = Utils::getStringInput("Category: ");
+  string description = Utils::getStringInput("Description: ");
+  double price = Utils::getDoubleInput("Price: $", 0.01, 999999.99);
+  int quantity = Utils::getIntInput("Stock Quantity: ", 0, 999999);
+
+  try {
+    string productId = FileManager::generateProductId();
+    Product newProduct(productId, name, category, description, price, quantity);
+
+    FileManager::updateProduct(newProduct);
+    products = FileManager::loadProducts();
+
+    cout << Utils::colorText("✓ Product added successfully!", "green", "",
+                             "bold")
+         << endl;
+    cout << "Product ID: " << Utils::colorText(productId, "yellow") << endl;
+    Utils::pauseScreen();
+  } catch (const exception &e) {
+    cout << Utils::colorText("✗ Error: " + string(e.what()), "red") << endl;
+    Utils::pauseScreen();
+  }
+}
+
+void Application::updateProduct() {
+  Utils::clearScreen();
+  Utils::showSubHeader("✏️ Update Product");
+
+  displayProductList();
+
+  string productId = Utils::getStringInput("Enter Product ID to update: ");
+
+  try {
+    Product product = FileManager::findProduct(productId);
+    product.displayInfo();
+
+    cout << endl << Utils::colorText("What to update?", "yellow") << endl;
+    cout << "1. Name" << endl;
+    cout << "2. Price" << endl;
+    cout << "3. Stock" << endl;
+    cout << "4. Description" << endl;
+    cout << "5. Category" << endl;
+
+    int choice = Utils::getIntInput("Choose: ", 1, 5);
+
+    switch (choice) {
+    case 1:
+      product.setName(Utils::getStringInput("New Name: "));
+      break;
+    case 2:
+      product.setPrice(Utils::getDoubleInput("New Price: $", 0.01, 999999.99));
+      break;
+    case 3:
+      product.setQuantity(Utils::getIntInput("New Stock: ", 0, 999999));
+      break;
+    case 4:
+      product.setDescription(Utils::getStringInput("New Description: "));
+      break;
+    case 5:
+      product.setCategory(Utils::getStringInput("New Category: "));
+      break;
+    }
+
+    FileManager::updateProduct(product);
+    products = FileManager::loadProducts();
+
+    cout << Utils::colorText("✓ Product updated!", "green", "", "bold") << endl;
+    Utils::pauseScreen();
+  } catch (const ProductNotFoundException &e) {
+    cout << Utils::colorText("✗ " + string(e.what()), "red") << endl;
+    Utils::pauseScreen();
+  }
+}
+
+void Application::deleteProduct() {
+  Utils::clearScreen();
+  Utils::showSubHeader("🗑️ Delete Product");
+
+  displayProductList();
+
+  string productId = Utils::getStringInput("Enter Product ID to delete: ");
+
+  try {
+    Product product = FileManager::findProduct(productId);
+    product.displayInfo();
+
+    string confirm = Utils::getStringInput("Are you sure? (yes/no): ");
+    if (confirm == "yes" || confirm == "y") {
+      FileManager::deleteProduct(productId);
+      products = FileManager::loadProducts();
+      cout << Utils::colorText("✓ Product deleted!", "green", "", "bold")
+           << endl;
+    } else {
+      cout << Utils::colorText("Cancelled.", "yellow") << endl;
+    }
+    Utils::pauseScreen();
+  } catch (const ProductNotFoundException &e) {
+    cout << Utils::colorText("✗ " + string(e.what()), "red") << endl;
+    Utils::pauseScreen();
+  }
+}
+
+void Application::viewAllOrders() {
+  Utils::clearScreen();
+  Utils::showSubHeader("📋 All Orders");
+
+  orders = FileManager::loadOrders();
+
+  if (orders.empty()) {
+    cout << Utils::colorText("No orders yet.", "yellow") << endl;
+    Utils::pauseScreen();
+    return;
+  }
+
+  cout << Utils::colorText("Total Orders: " + to_string(orders.size()),
+                           "yellow")
+       << endl
+       << endl;
+
+  for (const Order &order : orders) {
+    order.displayShort();
+  }
+
+  string viewDetails = Utils::getStringInput(
+      "\nView order details? Enter Order ID (or 'back'): ");
+  if (viewDetails != "back") {
+    for (const Order &order : orders) {
+      if (order.getId() == viewDetails) {
+        order.displayOrder();
+        break;
+      }
+    }
+  }
+
+  Utils::pauseScreen();
+}
+
+void Application::updateOrderStatus() {
+  Utils::clearScreen();
+  Utils::showSubHeader("📝 Update Order Status");
+
+  orders = FileManager::loadOrders();
+
+  for (const Order &order : orders) {
+    order.displayShort();
+  }
+
+  string orderId = Utils::getStringInput("\nEnter Order ID: ");
+
+  cout << endl << Utils::colorText("Select new status:", "yellow") << endl;
+  cout << "1. Pending" << endl;
+  cout << "2. Confirmed" << endl;
+  cout << "3. Processing" << endl;
+  cout << "4. Shipped" << endl;
+  cout << "5. Delivered" << endl;
+  cout << "6. Cancelled" << endl;
+
+  int choice = Utils::getIntInput("Choose: ", 1, 6);
+
+  OrderStatus newStatus;
+  switch (choice) {
+  case 1:
+    newStatus = OrderStatus::PENDING;
+    break;
+  case 2:
+    newStatus = OrderStatus::CONFIRMED;
+    break;
+  case 3:
+    newStatus = OrderStatus::PROCESSING;
+    break;
+  case 4:
+    newStatus = OrderStatus::SHIPPED;
+    break;
+  case 5:
+    newStatus = OrderStatus::DELIVERED;
+    break;
+  case 6:
+    newStatus = OrderStatus::CANCELLED;
+    break;
+  default:
+    newStatus = OrderStatus::PENDING;
+  }
+
+  try {
+    FileManager::updateOrderStatus(orderId, newStatus);
+    orders = FileManager::loadOrders();
+    cout << Utils::colorText("✓ Order status updated!", "green", "", "bold")
+         << endl;
+    Utils::pauseScreen();
+  } catch (const exception &e) {
+    cout << Utils::colorText("✗ " + string(e.what()), "red") << endl;
+    Utils::pauseScreen();
+  }
+}
+
+void Application::viewAllUsers() {
+  Utils::clearScreen();
+  Utils::showSubHeader("👥 All Users");
+
+  users = FileManager::loadUsers();
+
+  if (users.empty()) {
+    cout << Utils::colorText("No users registered.", "yellow") << endl;
+    Utils::pauseScreen();
+    return;
+  }
+
+  cout << Utils::colorText("Total Users: " + to_string(users.size()), "yellow")
+       << endl
+       << endl;
+
+  for (const auto &user : users) {
+    string roleColor = user->getRole() == "admin" ? "yellow" : "green";
+    cout << Utils::colorText("[" + to_string(user->getId()) + "]", "yellow")
+         << " " << Utils::colorText(user->getName(), "white", "", "bold")
+         << " | " << Utils::colorText(user->getEmail(), "yellow") << " | "
+         << Utils::colorText("[" + user->getRole() + "]", roleColor) << endl;
+  }
+
+  Utils::pauseScreen();
+}
+
+// ============================================
+// HELPERS
+// ============================================
+
+Product *Application::findProductById(const string &productId) {
+  for (auto &p : products) {
+    if (p.getId() == productId) {
+      return &p;
+    }
+  }
+  return nullptr;
+}
+
