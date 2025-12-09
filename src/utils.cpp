@@ -1,10 +1,10 @@
 #include "../include/utils.h"
+#include <chrono>
 #include <cstdlib>
 #include <iostream>
 #include <limits>
 #include <map>
-#include <ctime>
-
+#include <thread>
 
 using namespace std;
 
@@ -13,14 +13,18 @@ using namespace std;
 // ============================================
 
 string Utils::colorText(const string &text, const string &color,
-                        const string &bgColor, const string &style)
-{
+                        const string &bgColor, const string &style) {
   // ANSI escape codes for text colors
-  map<string, string> colors = {{"red", "\033[31m"}, {"green", "\033[32m"}, {"yellow", "\033[33m"}, {"blue", "\033[34m"}, {"yellow", "\033[35m"}, {"yellow", "\033[36m"}, {"white", "\033[37m"}, {"reset", "\033[0m"}};
+  map<string, string> colors = {{"red", "\033[31m"},    {"green", "\033[32m"},
+                                {"yellow", "\033[33m"}, {"blue", "\033[34m"},
+                                {"yellow", "\033[35m"}, {"yellow", "\033[36m"},
+                                {"white", "\033[37m"},  {"reset", "\033[0m"}};
 
   // ANSI escape codes for background colors
   map<string, string> bgColors = {
-      {"black", "\033[40m"}, {"red", "\033[41m"}, {"green", "\033[42m"}, {"yellow", "\033[43m"}, {"blue", "\033[44m"}, {"yellow", "\033[45m"}, {"yellow", "\033[46m"}, {"white", "\033[47m"}};
+      {"black", "\033[40m"},  {"red", "\033[41m"},  {"green", "\033[42m"},
+      {"yellow", "\033[43m"}, {"blue", "\033[44m"}, {"yellow", "\033[45m"},
+      {"yellow", "\033[46m"}, {"white", "\033[47m"}};
 
   // ANSI escape codes for styles
   map<string, string> styles = {{"bold", "\033[1m"},
@@ -31,20 +35,17 @@ string Utils::colorText(const string &text, const string &color,
   string result = "";
 
   // Apply text color
-  if (colors.find(color) != colors.end())
-  {
+  if (colors.find(color) != colors.end()) {
     result += colors[color];
   }
 
   // Apply background color
-  if (bgColors.find(bgColor) != bgColors.end())
-  {
+  if (bgColors.find(bgColor) != bgColors.end()) {
     result += bgColors[bgColor];
   }
 
   // Apply style
-  if (styles.find(style) != styles.end())
-  {
+  if (styles.find(style) != styles.end()) {
     result += styles[style];
   }
 
@@ -61,8 +62,7 @@ string Utils::colorText(const string &text, const string &color,
 // DISPLAY FUNCTIONS
 // ============================================
 
-void Utils::showMainHeader(const string &title)
-{
+void Utils::showMainHeader(const string &title) {
   string border = string(50, '=');
 
   cout << colorText(border, "white", "blue") << endl;
@@ -79,8 +79,7 @@ void Utils::showMainHeader(const string &title)
   cout << endl;
 }
 
-void Utils::showSubHeader(const string &subtitle)
-{
+void Utils::showSubHeader(const string &subtitle) {
   string border = string(50, '-');
 
   cout << colorText(border, "yellow", "", "dim") << endl;
@@ -94,8 +93,7 @@ void Utils::showSubHeader(const string &subtitle)
   cout << endl;
 }
 
-void Utils::clearScreen()
-{
+void Utils::clearScreen() {
 #ifdef _WIN32
   system("cls");
 #else
@@ -103,52 +101,40 @@ void Utils::clearScreen()
 #endif
 }
 
-void Utils::pauseScreen()
-{
+void Utils::pauseScreen() {
   cout << colorText("\nPress Enter to continue...", "yellow");
   cin.get();
 }
 
-#include <windows.h>
-#include <iostream>
-using namespace std;
-
 void Utils::showLoading(const string &message, int seconds) {
-    cout << message;
+  cout << colorText(message, "yellow");
 
-    for (int i = 0; i < seconds * 2; i++) {
-        cout << "." << flush;
-        Sleep(500);  // 500 milliseconds
-    }
+  for (int i = 0; i < seconds * 2; i++) {
+    cout << colorText(".", "yellow") << flush;
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+  }
 
-    cout << endl;
+  cout << endl;
 }
-
 
 // ============================================
 // INPUT VALIDATION FUNCTIONS
 // ============================================
 
-int Utils::getIntInput(const string &prompt, int min, int max)
-{
+int Utils::getIntInput(const string &prompt, int min, int max) {
   int value;
-  while (true)
-  {
+  while (true) {
     cout << prompt;
-    if (cin >> value)
-    {
+    if (cin >> value) {
       cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear buffer
-      if (value >= min && value <= max)
-      {
+      if (value >= min && value <= max) {
         return value;
       }
       cout << colorText("Please enter a number between " + to_string(min) +
                             " and " + to_string(max),
                         "yellow")
            << endl;
-    }
-    else
-    {
+    } else {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
       cout << colorText("Invalid input. Please enter a number.", "red") << endl;
@@ -156,23 +142,17 @@ int Utils::getIntInput(const string &prompt, int min, int max)
   }
 }
 
-double Utils::getDoubleInput(const string &prompt, double min, double max)
-{
+double Utils::getDoubleInput(const string &prompt, double min, double max) {
   double value;
-  while (true)
-  {
+  while (true) {
     cout << prompt;
-    if (cin >> value)
-    {
+    if (cin >> value) {
       cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear buffer
-      if (value >= min && value <= max)
-      {
+      if (value >= min && value <= max) {
         return value;
       }
       cout << colorText("Please enter a valid amount.", "yellow") << endl;
-    }
-    else
-    {
+    } else {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
       cout << colorText("Invalid input. Please enter a number.", "red") << endl;
@@ -180,30 +160,23 @@ double Utils::getDoubleInput(const string &prompt, double min, double max)
   }
 }
 
-string Utils::getStringInput(const string &prompt)
-{
+string Utils::getStringInput(const string &prompt) {
   string value;
   cout << prompt;
   getline(cin, value);
   return value;
 }
 
-int Utils::getMenuChoice(const string &prompt, int minOption, int maxOption)
-{
+int Utils::getMenuChoice(const string &prompt, int minOption, int maxOption) {
   int choice;
-  while (true)
-  {
+  while (true) {
     cout << colorText(prompt, "yellow");
-    if (cin >> choice)
-    {
+    if (cin >> choice) {
       cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear buffer
-      if (choice >= minOption && choice <= maxOption)
-      {
+      if (choice >= minOption && choice <= maxOption) {
         return choice;
       }
-    }
-    else
-    {
+    } else {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
