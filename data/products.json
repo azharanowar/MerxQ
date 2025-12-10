@@ -5,7 +5,7 @@
         "category": "Electronics",
         "description": "Latest Apple smartphone with A17 Pro chip",
         "price": 1299.99,
-        "quantity": 18
+        "quantity": 15
     },
     {
         "id": "P002",
@@ -37,7 +37,7 @@
         "category": "Phone",
         "description": "Samsung S25 Ultra Blue 256GB",
         "price": 400.0,
-        "quantity": 15
+        "quantity": 7
     },
     {
         "id": "P006",
@@ -69,7 +69,7 @@
         "category": "Audio",
         "description": "Apple wireless earbuds with active noise cancellation",
         "price": 249.99,
-        "quantity": 50
+        "quantity": 10
     },
     {
         "id": "P010",
@@ -78,5 +78,13 @@
         "description": "Portable gaming console with OLED screen",
         "price": 349.99,
         "quantity": 35
+    },
+    {
+        "id": "P011",
+        "name": "s10",
+        "category": "phone",
+        "description": "its good",
+        "price": 800.0,
+        "quantity": 90
     }
 ]

@@ -57,7 +57,7 @@
         "id": 7,
         "name": "Test",
         "email": "test@gmail.com",
-        "password": "pass123",
+        "password": "123",
         "role": "customer",
         "phone": "",
         "address": ""
@@ -79,5 +79,50 @@
         "role": "customer",
         "phone": "1",
         "address": "1"
+    },
+    {
+        "id": 10,
+        "name": "anowar",
+        "email": "anowar@gmail.com",
+        "password": "123",
+        "role": "customer",
+        "phone": "",
+        "address": ""
+    },
+    {
+        "id": 11,
+        "name": "sijan",
+        "email": "sijankhanghjk",
+        "password": "1234567890",
+        "role": "customer",
+        "phone": "",
+        "address": ""
+    },
+    {
+        "id": 12,
+        "name": "sijan",
+        "email": "sijankhan",
+        "password": "1234567890",
+        "role": "customer",
+        "phone": "xdcvhjkl",
+        "address": "1234567"
+    },
+    {
+        "id": 13,
+        "name": "rafi",
+        "email": "rafi",
+        "password": "",
+        "role": "customer",
+        "phone": "",
+        "address": ""
+    },
+    {
+        "id": 14,
+        "name": "Test Name",
+        "email": "testname@gmail.com",
+        "password": "123",
+        "role": "customer",
+        "phone": "",
+        "address": ""
     }
 ]

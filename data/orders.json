@@ -18,8 +18,8 @@
         ],
         "totalAmount": 1549.98,
         "status": "Delivered",
-        "createdAt": "2025-12-07 19:33:05",
-        "updatedAt": "2025-12-07 19:33:05"
+        "createdAt": "2025-12-10 12:59:49",
+        "updatedAt": "2025-12-10 12:59:49"
     },
     {
         "id": "ORD0002",
@@ -34,8 +34,8 @@
         ],
         "totalAmount": 1499.99,
         "status": "Shipped",
-        "createdAt": "2025-12-07 19:33:05",
-        "updatedAt": "2025-12-07 19:33:05"
+        "createdAt": "2025-12-10 12:59:49",
+        "updatedAt": "2025-12-10 12:59:49"
     },
     {
         "id": "ORD0003",
@@ -56,8 +56,8 @@
         ],
         "totalAmount": 1149.97,
         "status": "Processing",
-        "createdAt": "2025-12-07 19:33:05",
-        "updatedAt": "2025-12-07 19:33:05"
+        "createdAt": "2025-12-10 12:59:49",
+        "updatedAt": "2025-12-10 12:59:49"
     },
     {
         "id": "ORD0004",
@@ -72,8 +72,8 @@
         ],
         "totalAmount": 800.0,
         "status": "Pending",
-        "createdAt": "2025-12-07 19:33:05",
-        "updatedAt": "2025-12-07 19:33:05"
+        "createdAt": "2025-12-10 12:59:49",
+        "updatedAt": "2025-12-10 12:59:49"
     },
     {
         "id": "ORD0005",
@@ -88,7 +88,55 @@
         ],
         "totalAmount": 6499.95,
         "status": "Pending",
-        "createdAt": "2025-12-07 19:33:05",
-        "updatedAt": "2025-12-07 19:33:05"
+        "createdAt": "2025-12-10 12:59:49",
+        "updatedAt": "2025-12-10 12:59:49"
+    },
+    {
+        "id": "ORD0006",
+        "customerId": 12,
+        "items": [
+            {
+                "productId": "P005",
+                "productName": "S25 Ultra",
+                "price": 400.0,
+                "quantity": 8
+            }
+        ],
+        "totalAmount": 3200.0,
+        "status": "Pending",
+        "createdAt": "2025-12-10 12:59:49",
+        "updatedAt": "2025-12-10 12:59:49"
+    },
+    {
+        "id": "ORD0007",
+        "customerId": 13,
+        "items": [
+            {
+                "productId": "P009",
+                "productName": "AirPods Pro 2",
+                "price": 249.99,
+                "quantity": 40
+            }
+        ],
+        "totalAmount": 9999.6,
+        "status": "Cancelled",
+        "createdAt": "2025-12-10 12:59:49",
+        "updatedAt": "2025-12-10 12:59:49"
+    },
+    {
+        "id": "ORD0008",
+        "customerId": 7,
+        "items": [
+            {
+                "productId": "P001",
+                "productName": "iPhone 15 Pro",
+                "price": 1299.99,
+                "quantity": 3
+            }
+        ],
+        "totalAmount": 3899.9700000000003,
+        "status": "Shipped",
+        "createdAt": "2025-12-10 12:59:49",
+        "updatedAt": "2025-12-10 12:59:49"
     }
 ]
