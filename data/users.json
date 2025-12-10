@@ -118,8 +118,8 @@
     },
     {
         "id": 14,
-        "name": "Test Name",
-        "email": "testname@gmail.com",
+        "name": "Test Customers",
+        "email": "customer@gmail.com",
         "password": "123",
         "role": "customer",
         "phone": "",
